@@ -173,7 +173,7 @@ class Yolov5Detector:
         if self.view_image:
             cv2.imshow(str(0), im0)
             cv2.waitKey(1)  # 1 millisecond
-        if self.publish_image:
+        if self.publish_image and len(pred[0].cpu().numpy()) != 0:
             self.image_pub.publish(self.bridge.cv2_to_imgmsg(im0, "bgr8"))
         
 
